@@ -1,5 +1,6 @@
 {
   "name": "coffee-bot-pi-bot-server",
+  "main": "server.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,6 +11,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.14.0",
+    "mongoose": "~4.7.5",
     "helmet": "^3.3.0",
     "morgan": "~1.7.0",
     "pug": "~2.0.0-beta6",

@@ -1,7 +1,8 @@
 var express    = require('express');
 var app        = express(); 
 var bodyParser = require('body-parser');
-var mongoose   = require('mongoose'); 
+var mongoose   = require('mongoose');
+var Brew       = require('./app/models/brew'); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -18,6 +19,11 @@ db.once('open', function() {
 var port = process.env.PORT || 8080;
 
 var router = express.Router();
+
+router.use(function(req, res, next) {
+  console.log('Something is happening.');
+  next();
+});
 
 router.get('/', function(req, res) {
   res.json({ message: 'hooray! welcome to our api!' });

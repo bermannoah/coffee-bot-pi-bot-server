@@ -42,6 +42,15 @@ router.route('/brews')
         
       res.json({ message: 'Brew created!' });
     });
+  })
+  
+  .get(function(req, res){
+    Brew.find(function(err, brews) {
+      if (err)
+        res.send(err);
+        
+      res.json(brews);
+    });
   });
 
 app.use('/api', router);

@@ -29,6 +29,8 @@ router.get('/', function(req, res) {
   res.json({ message: 'hooray! welcome to our api!' });
 })
 
+
+// routes for all brews
 router.route('/brews')
 
   .post(function(req, res) {
@@ -52,6 +54,19 @@ router.route('/brews')
       res.json(brews);
     });
   });
+
+// routes for a single brew
+router.route('/brews/:brew_id')
+  
+  .get(function(req, res) {
+    Brew.findById(req.params.brew_id, function(err, brew) {
+      if (err)
+        res.send(err);
+        
+      res.json(brew);
+    });
+  });
+
 
 app.use('/api', router);
 

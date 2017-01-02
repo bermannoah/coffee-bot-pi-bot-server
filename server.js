@@ -65,7 +65,23 @@ router.route('/brews/:brew_id')
         
       res.json(brew);
     });
-  });
+  })
+  
+  .put(function(req, res) {
+    Brew.findById(req.params.brew_id, function(err, brew) {
+      if (err)
+        res.send(err);
+        
+      brew.type = req.body.type;
+      
+      brew.save(function(err) {
+        if (err)
+          res.send(err);
+          
+        res.json({ message: 'Brew updated!' });
+      });
+    });
+  })
 
 
 app.use('/api', router);

@@ -29,6 +29,21 @@ router.get('/', function(req, res) {
   res.json({ message: 'hooray! welcome to our api!' });
 })
 
+router.route('/brews')
+
+  .post(function(req, res) {
+    
+    var brew = new Brew();
+    brew.type = req.body.type;
+    
+    brew.save(function(err) {
+      if (err)
+        res.send(err);
+        
+      res.json({ message: 'Brew created!' });
+    });
+  });
+
 app.use('/api', router);
 
 app.listen(port);

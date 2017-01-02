@@ -82,6 +82,17 @@ router.route('/brews/:brew_id')
       });
     });
   })
+  
+  .delete(function(req, res) { 
+    Brew.remove({
+      _id: req.params.brew_id
+    }, function(err, bear) {
+      if (err)
+        res.send(err);
+      
+      res.json({ message: 'Successfully deleted.' });
+    });
+    })
 
 
 app.use('/api', router);
